@@ -5,4 +5,5 @@ All the scripts are stored in folders, starting with the number such as X_***. (
 
 ## folder structure
 - DiceGame: includes scripts to play DiceGame with OOP.  
-- tic-tac-toe: includes scripts to make a tic-tac-toe with OOP.  
+- tic-tac-toe: includes scripts to make a tic-tac-toe with OOP.
+- useful_tools: contain variety types of convinient tools to be used for daily lives.
