@@ -1,6 +1,6 @@
 import random
-
 from move import Move
+
 
 class Player:
     
@@ -28,8 +28,9 @@ class Player:
             return self.get_human_move()
         else:
             return self.get_computer_move()
-        
-    def get_human_move(self):
+
+    @staticmethod
+    def get_human_move():
         while True:
             user_input = int(input("Please enter your move(1-9):"))
             move = Move(user_input)
@@ -38,10 +39,10 @@ class Player:
             else:
                 print("Please enter an integer between 1 and 9.")
         return move
-                
-    def get_computer_move(self):
+
+    @staticmethod
+    def get_computer_move():
         random_choice = random.choice(range(1, 10))
         move = Move(random_choice)
         print("Computer move (1-9):", move.value)
         return move
-
