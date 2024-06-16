@@ -33,8 +33,10 @@ class Board:
 
         if value == Board.EMPTY_CELL:
             self.game_board[row][col] = player.marker
+            return True
         else:
             print("This position is already taken. Please enter another one.")
+            return False
 
     def check_is_game_over(self, player, last_move):
         return ((self.check_row(player, last_move)
