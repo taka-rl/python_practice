@@ -1,4 +1,6 @@
+'''
 from node import Node
+
 
 node_2 = Node(3)
 node_1 = Node(5, node_2)
@@ -33,4 +35,18 @@ print('value:', node_a.value, 'next:', node_a.next)
 node_d.next = node_a
 print('node_a:', node_a)
 print('value:', node_d.value, 'next:', node_d.next)
+# test ----
+'''
+
+from linked_list import LinkedList
+
+# test ----
+my_linked_list = LinkedList()
+my_linked_list.insert_node(9)
+print(my_linked_list.head)
+print(my_linked_list.head.value)  # 9
+
+my_linked_list.insert_node(3)
+print(my_linked_list.head.value)  # 3
+
 # test ----
