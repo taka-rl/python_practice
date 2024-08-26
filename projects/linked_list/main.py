@@ -38,6 +38,7 @@ print('value:', node_d.value, 'next:', node_d.next)
 # test ----
 '''
 
+
 from linked_list import LinkedList
 
 # test ----
@@ -45,8 +46,17 @@ my_linked_list = LinkedList()
 my_linked_list.insert_node(9)
 print(my_linked_list.head)
 print(my_linked_list.head.value)  # 9
+# 1st: 9
 
 my_linked_list.insert_node(3)
 print(my_linked_list.head.value)  # 3
+# 2nd: 3 -> 9
 
-# test ----
+my_linked_list.insert_node(6)
+print(my_linked_list.head.next.value)  # 6
+# 3rd: 3 -> 6 -> 9
+print(my_linked_list.head.value)  # 3
+print(my_linked_list.head.next.value)  # 6
+print(my_linked_list.head.next.next.value)  # 6
+
+# test ----'''
