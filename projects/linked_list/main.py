@@ -59,4 +59,7 @@ print(my_linked_list.head.value)  # 3
 print(my_linked_list.head.next.value)  # 6
 print(my_linked_list.head.next.next.value)  # 6
 
+my_linked_list.insert_node(15)
+# 4th: 3 -> 6 -> 9 -> 15
+print(my_linked_list.head.next.next.next.value)
 # test ----'''
