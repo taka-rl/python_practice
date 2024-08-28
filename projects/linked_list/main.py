@@ -38,7 +38,7 @@ print('value:', node_d.value, 'next:', node_d.next)
 # test ----
 '''
 
-
+import time
 from linked_list import LinkedList
 
 # test ----
@@ -63,6 +63,20 @@ my_linked_list.insert_node(15)
 # 4th: 3 -> 6 -> 9 -> 15
 print(my_linked_list.head.next.next.next.value)
 my_linked_list.print_list_items()
+
+start_time = time.time()
+print(my_linked_list.count_nodes())
+end_time = time.time()
+print(f"Total execution time of iterative method: {end_time - start_time} second")
+start_time = time.time()
+print(my_linked_list.count_nodes_recursive(my_linked_list.head))
+end_time = time.time()
+print(f"Total execution time of recursive method: {end_time - start_time} second")
+
+
+my_linked_list_null = LinkedList()
+print(my_linked_list_null.count_nodes())
+
 # test ----'''
 
 # test with char----'''
@@ -78,6 +92,7 @@ my_linked_list_char.insert_node('Code')
 # print(my_linked_list_char.head.next.next.next.value, end=' ')
 # print()
 my_linked_list_char.print_list_items()
+print(my_linked_list_char.count_nodes())
 
 node_char4 = Node('Code')
 node_char3 = Node('Hello', node_char4)
@@ -87,4 +102,3 @@ print(node_char1.value, end=' ')
 print(node_char2.value, end=' ')
 print(node_char3.value, end=' ')
 print(node_char4.value, end=' ')
-

@@ -50,3 +50,30 @@ class LinkedList:
                 print(runner.value, end=' ')
                 runner = runner.next
             print()
+
+    def count_nodes(self):
+        '''
+        # iterative method is a little bit more efficient in terms of performance than recursive method.
+        # iterative implementation
+        count = 0
+        runner = self.head
+
+        while runner is not None:
+            count += 1
+            runner = runner.next
+
+        return count
+        '''
+
+        return self.count_nodes_recursive(self.head)
+
+    def count_nodes_recursive(self, node):
+        if node is None:
+            return 0
+        else:
+            return 1 + self.count_nodes_recursive(node.next)
+
+
+
+
+
