@@ -1,7 +1,7 @@
-'''
+
 from node import Node
 
-
+'''
 node_2 = Node(3)
 node_1 = Node(5, node_2)
 print(node_1.value)
@@ -62,4 +62,29 @@ print(my_linked_list.head.next.next.value)  # 6
 my_linked_list.insert_node(15)
 # 4th: 3 -> 6 -> 9 -> 15
 print(my_linked_list.head.next.next.next.value)
+my_linked_list.print_list_items()
 # test ----'''
+
+# test with char----'''
+my_linked_list_char = LinkedList()
+my_linked_list_char.insert_node('Python')
+my_linked_list_char.insert_node('World')
+my_linked_list_char.insert_node('Hello')
+my_linked_list_char.insert_node('Code')
+
+# print(my_linked_list_char.head.value, end=' ')
+# print(my_linked_list_char.head.next.value, end=' ')
+# print(my_linked_list_char.head.next.next.value, end=' ')
+# print(my_linked_list_char.head.next.next.next.value, end=' ')
+# print()
+my_linked_list_char.print_list_items()
+
+node_char4 = Node('Code')
+node_char3 = Node('Hello', node_char4)
+node_char2 = Node('World', node_char3)
+node_char1 = Node('Python', node_char2)
+print(node_char1.value, end=' ')
+print(node_char2.value, end=' ')
+print(node_char3.value, end=' ')
+print(node_char4.value, end=' ')
+
