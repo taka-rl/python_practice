@@ -73,6 +73,15 @@ class LinkedList:
         else:
             return 1 + self.count_nodes_recursive(node.next)
 
+    def print_reversed(self):
+        self.print_reversed_recursive(self.head)
+
+    def print_reversed_recursive(self, node):
+        print(node)
+        if node is not None:
+            self.print_reversed_recursive(node.next)
+            print(node.value, end=' ')
+
     def find_node(self, target_value):
         runner = self.head
         while runner is not None:

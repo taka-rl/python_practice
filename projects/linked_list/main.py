@@ -104,3 +104,44 @@ print(my_linked_list_char.find_node('Python1'))
 print(my_linked_list_char.delete_node('Code'))
 my_linked_list_char.print_list_items()
 '''
+
+# test print reversibly
+'''
+How print_reversed method works:
+- Recursive Call Structure
+Imagine the linked list: 3 -> 5 -> 8 -> 15 -> 26 -> 35.
+print_reversed() is called, which calls print_reversed_recursive(self.head).
+The recursion goes as follows:
+    print_reversed_recursive(node=3) calls print_reversed_recursive(node=5).
+    print_reversed_recursive(node=5) calls print_reversed_recursive(node=8).
+    This continues until print_reversed_recursive(node=35) calls print_reversed_recursive(node=None).
+    
+- Unwinding and Printing
+Once node=None is reached, each call returns in the reverse order:
+The print(node.value, end=' ') statement is executed in the reverse call order.
+35, 26, 15, 8, 5, and 3 are printed, in that order.
+
+How is this possible?
+- Function call stack:
+    Each time a function is called, it is pushed onto a call stack. When a function completes, 
+    it is popped off the stack, and the control returns to the function that called it.
+    The function calls are executed in a Last In, First Out (LIFO) manner, which means that 
+    the most recent call (the last one made) is the first to complete and return.
+
+- Recursive Function Flow: 
+    In the case of recursion, each call to the recursive function adds another layer to the stack, 
+    each with its own local variables and state. The deepest call (where the base condition is met) is completed first, 
+    and then the function starts to return back through the stack, one layer at a time.
+
+'''
+
+my_linked_list1 = LinkedList()
+my_linked_list1.insert_node(3)
+my_linked_list1.insert_node(5)
+my_linked_list1.insert_node(8)
+my_linked_list1.insert_node(15)
+my_linked_list1.insert_node(26)
+my_linked_list1.insert_node(35)
+my_linked_list1.print_reversed()
+
+
