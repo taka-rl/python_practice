@@ -52,7 +52,7 @@ class LinkedList:
             print()
 
     def count_nodes(self):
-        '''
+        """
         # iterative method is a little bit more efficient in terms of performance than recursive method.
         # iterative implementation
         count = 0
@@ -63,7 +63,7 @@ class LinkedList:
             runner = runner.next
 
         return count
-        '''
+        """
 
         return self.count_nodes_recursive(self.head)
 
@@ -73,7 +73,32 @@ class LinkedList:
         else:
             return 1 + self.count_nodes_recursive(node.next)
 
+    def find_node(self, target_value):
+        runner = self.head
+        while runner is not None:
+            if runner.value == target_value:
+                return True
+            runner = runner.next
 
+        return False
 
+    def delete_node(self, target_value):
+        if self.head is None:
+            return False
+        elif self.head.value == target_value:
+            self.head = self.head.next
+            return True
+        else:
+            previous = self.head
+            runner = self.head.next
 
+            while (runner is not None) and (target_value > runner.value):
+                previous = runner
+                runner = runner.next
 
+            if (runner is not None) and (runner.value == target_value):
+                # previous will now point to the bridge that comes after the runner node
+                previous.next = runner.next  # bridge
+                return True
+            else:
+                return False

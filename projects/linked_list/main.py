@@ -63,7 +63,11 @@ my_linked_list.insert_node(15)
 # 4th: 3 -> 6 -> 9 -> 15
 print(my_linked_list.head.next.next.next.value)
 my_linked_list.print_list_items()
+my_linked_list.delete_node(15)
+my_linked_list.delete_node(6)
+my_linked_list.print_list_items()
 
+'''
 start_time = time.time()
 print(my_linked_list.count_nodes())
 end_time = time.time()
@@ -76,10 +80,11 @@ print(f"Total execution time of recursive method: {end_time - start_time} second
 
 my_linked_list_null = LinkedList()
 print(my_linked_list_null.count_nodes())
+'''
 
 # test ----'''
-
-# test with char----'''
+'''
+# test with char----
 my_linked_list_char = LinkedList()
 my_linked_list_char.insert_node('Python')
 my_linked_list_char.insert_node('World')
@@ -94,11 +99,8 @@ my_linked_list_char.insert_node('Code')
 my_linked_list_char.print_list_items()
 print(my_linked_list_char.count_nodes())
 
-node_char4 = Node('Code')
-node_char3 = Node('Hello', node_char4)
-node_char2 = Node('World', node_char3)
-node_char1 = Node('Python', node_char2)
-print(node_char1.value, end=' ')
-print(node_char2.value, end=' ')
-print(node_char3.value, end=' ')
-print(node_char4.value, end=' ')
+print(my_linked_list_char.find_node('Python'))
+print(my_linked_list_char.find_node('Python1'))
+print(my_linked_list_char.delete_node('Code'))
+my_linked_list_char.print_list_items()
+'''
