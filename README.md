@@ -12,4 +12,6 @@ https://pynative.com/python-classes-and-objects/
   - DiceGame: includes scripts to play DiceGame with OOP.  
   - tic-tac-toe: includes scripts to play a tic-tac-toe with OOP.
   - linked_list: includes scripts to create a linked list with OOP.
+  - simple_notepad: includes a script to create a simple notepad with tkinter.
+  - chat_bot: includes a script to make a simple chat bot.
 - useful_tools: contain variety types of convinient tools to be used for daily lives.
