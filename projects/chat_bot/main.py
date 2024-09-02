@@ -3,14 +3,14 @@ from datetime import datetime
 
 
 class ChatBot:
-    def __int__(self, name: str, responses: dict[str, str]) -> None:
+    def __init__(self, name: str, responses: dict[str, str]) -> None:
         self.name = name
         self.responses = responses
 
     @staticmethod
     def calculate_similarity(input_sentence: str, response_sentence: str) -> float:
         sequence: SequenceMatcher = SequenceMatcher(a=input_sentence, b=response_sentence)
-        return sequence.ration()
+        return sequence.ratio()
 
     def get_best_response(self, user_input: str) -> tuple[str, float]:
         highest_similarity: float = 0.0
@@ -33,7 +33,7 @@ class ChatBot:
 
             if response == 'GET_TIME':
                 response = f'The time is: {datetime.now(): %H:%M}'
-            print(f'{self.name}: {response} (Similarity: {similarity:.2%}')
+            print(f'{self.name}: {response} (Similarity: {similarity:.2%})')
 
 
 def main() -> None:
