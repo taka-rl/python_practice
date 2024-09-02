@@ -74,8 +74,11 @@ class ChatBot:
                 location: str = input('Enter the location for the weather information: ')
                 weather_info = self.get_weather_info(location)
 
-                print(f'The weather information in {location} is as follows: ')
-                response = weather_info
+                if weather_info:
+                    print(f'The weather information in {location} is as follows: ')
+                    response = weather_info
+                else:
+                    response = 'Sorry, I could not retrieve the weather information at the moment.'
 
             print(f'{self.name}: {response} (Similarity: {similarity:.2%})')
 
