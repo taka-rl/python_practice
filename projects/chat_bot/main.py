@@ -1,5 +1,6 @@
 from difflib import SequenceMatcher
 from datetime import datetime
+from typing import Dict, Any
 
 
 class ChatBot:
@@ -28,7 +29,17 @@ class ChatBot:
         return best_match, highest_similarity
 
     @staticmethod
-    def get_weather_info(location: str) -> dict[float, float, float, float, str]:
+    def get_weather_info(location: str) -> dict[str, Any]:
+        '''
+        Return the weather information depending on the location through OpenWeather API
+        About URL setting: https://openweathermap.org/current#builtin
+
+        Parameters:
+            location (str): the location
+
+        Returns:
+            dict: the weather information
+        '''
         import requests
 
         api_key = 'your_api_key_here'  # Replace 'your_api_key_here' with your actual OpenWeatherMap API key
