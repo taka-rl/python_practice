@@ -2,7 +2,8 @@
 ## about
 This repository is totally for myself to practice python programming from the basic to Object Oriented Programming(OOP).  
 To understand the fundamental knowledge and skills, the following site was used:  
-https://pynative.com/python-classes-and-objects/  
+https://pynative.com/python-exercises-with-solutions/
+
 
 
 ## folder structure
