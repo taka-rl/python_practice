@@ -105,29 +105,19 @@ This allows you to pass any number of keyword arguments to a function.
 These are received as a dictionary inside the function.
 """
 
-@speed_calc_decorator
-def add_numbers(a, b):
-    return a + b
 
-@speed_calc_decorator
-def greet(name, greeting="Hello"):
-    print(f"{greeting}, {name}!")
-
-
-add_numbers(2, 3)
-greet(name="Alice", greeting="Hi")
-
-
-def speed_calc_decorator(func):
+def test_decorator(func):
     def wrapper(*args, **kwargs):
         print(f"Arguments passed to {func.__name__}: args={args}, kwargs={kwargs}")
         result = func(*args, **kwargs)
         return result
     return wrapper
 
-@speed_calc_decorator
+
+@test_decorator
 def example_function(a, b, c=10):
     return a + b + c
+
 
 example_function(1, 2, c=20)
 # the output is as follows:
@@ -144,6 +134,7 @@ to the original function, ensuring the decorator works regardless of the functio
 
 # example4
 
+
 class User:
     def __init__(self, name):
         self.name = name
@@ -152,7 +143,7 @@ class User:
 
 def is_authenticated_decorator(function):
     def wrapper(*args, **kwargs):
-        if args[0].is_logged_in == True:
+        if args[0].is_logged_in:
             function(args[0])
     return wrapper
 
@@ -163,5 +154,8 @@ def create_blog_post(user):
 
 
 new_user = User("angela")
+create_blog_post(new_user)
+
 new_user.is_logged_in = True
 create_blog_post(new_user)
+
