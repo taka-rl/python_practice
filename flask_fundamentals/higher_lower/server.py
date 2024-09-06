@@ -16,19 +16,19 @@ def style_decorator(function):
         if function.__name__ == "check_number":
             if 'low' in text:
                 text_color = "pink"
-                git_link = LOW
+                gif_link = LOW
             elif 'high' in text:
                 text_color = "purple"
-                git_link = HIGH
+                gif_link = HIGH
             else:
                 text_color = "blue"
-                git_link = CORRECT
+                gif_link = CORRECT
 
         else:
             text_color = "black"
-            git_link = INIT
+            gif_link = INIT
 
-        return f'<h1 style="color:{text_color}">{text}</h1><br><br><img src="{git_link}">'
+        return f'<h1 style="color:{text_color}">{text}</h1><br><br><img src="{gif_link}">'
 
     return wrapper
 
