@@ -30,7 +30,7 @@ class ChatBot:
 
     @staticmethod
     def get_weather_info(location: str) -> dict[str, Any]:
-        '''
+        """
         Return the weather information depending on the location through OpenWeather API
         About URL setting: https://openweathermap.org/current#builtin
 
@@ -39,11 +39,11 @@ class ChatBot:
 
         Returns:
             dict: the weather information
-        '''
+        """
         import requests
 
         api_key = 'your_api_key_here'  # Replace 'your_api_key_here' with your actual OpenWeatherMap API key
-        url = f'http://api.openweathermap.org/data/2.5/weather?id=524901&appid={api_key}&units=metric'
+        url = f'http://api.openweathermap.org/data/2.5/weather?q={location}&appid={api_key}&units=metric'
 
         # Get the information
         response = requests.get(url)
@@ -111,11 +111,3 @@ def main() -> None:
 
 if __name__ == '__main__':
     main()
-
-"""
-Homework:
-1: add more responses
-2: add a way to exit the program through the chat
-3: add some cool features, like checking for the weather forecast
-4: make it so that if the accuracy falls below 50%, it returns a default response
-"""
