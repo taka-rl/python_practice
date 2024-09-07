@@ -42,7 +42,7 @@ class ChatBot:
         """
         import requests
 
-        api_key = 'your_api_key_here'  # Replace 'your_api_key_here' with your actual OpenWeatherMap API key
+        api_key = '199c141de55e01adedffa7f47dc14757'  # Replace 'your_api_key_here' with your actual OpenWeatherMap API key
         url = f'http://api.openweathermap.org/data/2.5/weather?q={location}&appid={api_key}&units=metric'
 
         # Get the information

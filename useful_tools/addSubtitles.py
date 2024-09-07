@@ -92,4 +92,4 @@ for start, end, txt in subtitles.subtitles:
 final_video = CompositeVideoClip([video] + clips)
 
 # Write the output video file
-final_video.write_videofile("output_" + video + ".mp4", codec="libx264", fps=video.fps)
+final_video.write_videofile("output_" + video.filename + ".mp4", codec="libx264", fps=video.fps)
