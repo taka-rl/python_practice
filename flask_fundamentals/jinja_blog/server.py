@@ -32,30 +32,23 @@ def get_api(name: str):
         return render_template("guess_error.html", error=error)
 
 
-def get_all_posts():
-    pass
-
-
 @app.route('/post/<int:id_num>')
 def get_post(id_num):
-    # all_posts = get_all_posts()
     for post_data in all_posts:
         if post_data["id"] == id_num:
-            print("equal")
             post = Post(post_data["id"],
                         post_data["title"],
                         post_data["subtitle"],
                         post_data["body"])
             print(post.id)
             return render_template("post.html", post=post)
-        else:
-            return None
+    else:
+        return None
 
 
 @app.route('/blog')
 def blog():
-    # all_posts = get_all_posts()
-    return render_template("blog.html", year=current_year, posts=all_posts)
+    return render_template("blog.html", posts=all_posts, year=current_year)
 
 
 @app.route('/')
