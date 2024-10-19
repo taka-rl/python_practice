@@ -31,7 +31,7 @@ def create_timer_presentation(min_timer: int) -> str:
     total_seconds = min_timer * 60
 
     # Loop to create slides, one for each second
-    for i in range(0, total_seconds + 1):
+    for i in range(total_seconds, -1, -1):
         # Create a new blank slide
         slide = presentation.slides.add_slide(presentation.slide_layouts[5])  # Layout 5 is a blank slide
 
@@ -75,7 +75,8 @@ def create_timer_presentation(min_timer: int) -> str:
 
 def set_slide_transition_and_export(ppt_path: str, video_path: str) -> None:
     """
-    Open a PowerPoint presentation, set slide transitions to 0.95 seconds, and export it as a video.
+    Open a PowerPoint presentation, set slide transitions to 0.99 seconds, and export it as a video.
+    Somehow, it can't export a video which isn't equal to the timer and each slide on PowerPoint.
 
     ppt_path: str
         Path to the PowerPoint presentation file.
@@ -87,18 +88,20 @@ def set_slide_transition_and_export(ppt_path: str, video_path: str) -> None:
     powerpoint.Visible = 1  # Ensure PowerPoint is visible
     presentation = powerpoint.Presentations.Open(ppt_path)
 
-    # Set slide transition time to 0.95 seconds
+    print('Preparation for exporting')
+    # Set slide transition time to 0.99 seconds
     for slide in presentation.Slides:
         # Ensure the AdvanceOnTime is set to True
         slide.SlideShowTransition.AdvanceOnTime = True
         # Set the transition time (use this instead of directly accessing .AdvanceTime)
-        slide.SlideShowTransition.AdvanceTime = float(0.985)  # Set to 0.95 seconds
+        slide.SlideShowTransition.AdvanceTime = float(0.99)
 
+    print('Start exporting')
     # Export the presentation as a video
-    presentation.CreateVideo(video_path, True, 0.985)
+    presentation.CreateVideo(video_path, True, 0.99)
 
     '''
-    # Save and close the presentation
+    # Save and close the presentation    
     presentation.Save()
     presentation.Close()
     powerpoint.Quit()
@@ -108,12 +111,49 @@ def set_slide_transition_and_export(ppt_path: str, video_path: str) -> None:
     print('----- Make sure if the video has been exported properly. -----')
 
 
+def save_slides_as_jpeg(ppt_path: str, output_folder: str) -> None:
+    """
+    Save each slide in the PowerPoint presentation as a JPEG image.
+
+    ppt_path: str
+        Path to the PowerPoint presentation file.
+    output_folder: str
+        Folder where the JPEG images will be saved.
+    """
+    # Initialize PowerPoint application
+    powerpoint = win32com.client.Dispatch("PowerPoint.Application")
+    powerpoint.Visible = 1  # Ensure PowerPoint is visible
+    presentation = powerpoint.Presentations.Open(ppt_path)
+
+    # Export each slide as a JPEG
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+
+    # Loop through each slide and export as a JPEG
+    for i, slide in enumerate(presentation.Slides, start=1):
+        slide_path = os.path.join(output_folder, f"slide_{i}.jpg")
+        slide.Export(slide_path, "JPG")
+        print(f"Saved slide {i} as {slide_path}")
+
+    # Close the presentation and quit PowerPoint
+    # presentation.Close()
+    # powerpoint.Quit()
+
+    print(f'Slides have been saved on: {output_folder}')
+
+
 if __name__ == '__main__':
     min_timer = int(input("Enter the number of minutes for the countdown timer: "))
+
+    choice = int(input("Choose one of the following numbers: "
+                       "1: Create PPT slide of timer and Exported as a video"
+                       "2: Create PPT slide of timer and Exported as JPEG images"
+                       "As Default is 2, 2 will be executed if the number entered is not 1 or 2."))
+
     # Get the absolute path of the current directory
     current_path = os.path.dirname(os.path.abspath(__file__))
 
-    # Step 1: Create the timer presentation
+    # Create the timer presentation
     if not os.path.exists(f"{min_timer}_minute_timer_presentation.pptx"):
         ppt_file = create_timer_presentation(min_timer)
     else:
@@ -123,7 +163,13 @@ if __name__ == '__main__':
     # Ensure the correct file path is used (combine the current path with the PowerPoint file)
     ppt_file_path = os.path.join(current_path, ppt_file)
 
-    # Step 2: Set slide transition time to 0.95 seconds and export as a video
-    video_file = f"{min_timer}_minute_timer_video.mp4"
-    video_file_path = os.path.join(current_path, video_file)
-    set_slide_transition_and_export(ppt_file_path, video_file_path)
+    if choice == 1:
+        # Export as a video
+        video_file = f"{min_timer}_minute_timer_video.mp4"
+        video_file_path = os.path.join(current_path, video_file)
+        set_slide_transition_and_export(ppt_file_path, video_file_path)
+
+    else:
+        # Export as JPEG images
+        output_folder = os.path.join(current_path, f"{min_timer}_minute_timer_images")
+        save_slides_as_jpeg(ppt_file_path, output_folder)
